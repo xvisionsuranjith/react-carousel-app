@@ -58,7 +58,11 @@ export default function Carousel(props) {
         setSlideIndex(index)
     }
 
+    console.log(slideIndex);
+
     const BASE_URL = process.env.PUBLIC_URL || 'http://localhost:3000';
+    const showPrevNavigationButton = sliderData.length > 1 && slideIndex !== 1;
+    const showNextNavigationButton = sliderData.length > 1 && slideIndex !== sliderData.length;
 
     return (
         <div className={"container-slider"}>
@@ -75,8 +79,9 @@ export default function Carousel(props) {
                 )
             })}
 
-            { sliderData.length > 1 && <BtnSlider moveSlide={nextSlide} direction={"next"} />}
-            { sliderData.length > 1 && <BtnSlider moveSlide={prevSlide} direction={"prev"}/>}
+    { showPrevNavigationButton && <BtnSlider moveSlide={prevSlide} direction={"prev"}/>}
+    { showNextNavigationButton && <BtnSlider moveSlide={nextSlide} direction={"next"} />}
+
 
             <div className="container-dots">
                 {sliderData.map((item, index) => (

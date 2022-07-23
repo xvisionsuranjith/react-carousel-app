@@ -66,8 +66,6 @@ const carouselData =
 app.get("/api/carousel", (req, res) => {
 
   let numberOfSlidesToFecth = req.query.slides || 5;
-  console.log(numberOfSlidesToFecth);
-
   const filteredSlideResult = carouselData.slides.slice(0,numberOfSlidesToFecth);
 
   return res.send(filteredSlideResult).status(200);
