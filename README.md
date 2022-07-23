@@ -6,4 +6,4 @@
 
 2. Then, go inside the backend folder and run "npm install" and then "npm start" //nodemon is configured in here
 
-# UI runs on PORT 3000 and the API runs on PORT 3600
+Notes: UI runs on PORT 3000 and the API runs on PORT 3600
