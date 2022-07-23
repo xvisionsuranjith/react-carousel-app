@@ -74,8 +74,9 @@ export default function Carousel(props) {
                     </div>
                 )
             })}
-            <BtnSlider moveSlide={nextSlide} direction={"next"} />
-            <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
+
+            { sliderData.length > 1 && <BtnSlider moveSlide={nextSlide} direction={"next"} />}
+            { sliderData.length > 1 && <BtnSlider moveSlide={prevSlide} direction={"prev"}/>}
 
             <div className="container-dots">
                 {sliderData.map((item, index) => (
