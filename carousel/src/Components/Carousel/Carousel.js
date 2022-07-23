@@ -14,22 +14,27 @@ export default function Carousel(props) {
           .then((data) => {
             setSliderData(data);
 
-            // if (+props.Infinite) {
-            let timer1 = setTimeout(() => {
-                    // setSlideIndex(slideIndex + 1);
-                    // if (slideIndex <= data.length) {
-                    //     moveDot(slideIndex)
-                    // }
-                    console.log('auto slide')
-             }, 500)
-            // }
+            let i = 0;
+            let timer1 = setInterval(() => {
+                if (i < data.length) {
+                    i++;
+                    moveDot(i);
+                }
+                else {
+                    if (props.Infinite === "true") {
+                        i = 0;
+                    }
+                    else {
+                        clearInterval(timer1)
+                    }
+                }
+            }, 3000)
 
-            // return () => {
-            //     clearTimeout(timer1)
-            // }
-
+            return () => {
+                clearInterval(timer1)
+            }
           });
-      }, [props.Slides]);
+      }, [props.Slides, props.Infinite]);
 
     const nextSlide = () => {
         if(slideIndex !== sliderData.length){
